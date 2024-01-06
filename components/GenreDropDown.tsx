@@ -4,26 +4,26 @@ import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 
 async function GenreDropDown() {
-    const url = "https://api.themoviedb.org/3/genre/movie/list?language=en";
-    const options: RequestInit = {
-        headers: {
-            accept: "application/json",
-            Authorization: `Bearer ` + getTBDMReadAccessToken(),
-        },
-        next: {
-            revalidate: 60 * 60 * 24, // 24 hours
-        },
-    };
+  const url = "https://api.themoviedb.org/3/genre/movie/list?language=en";
+  const options: RequestInit = {
+    headers: {
+      accept: "application/json",
+      Authorization: `Bearer ` + getTBDMReadAccessToken(),
+    },
+    next: {
+      revalidate: 60 * 60 * 24, // 24 hours
+    },
+  };
 
-    const response = await fetch(url, options);
-    const data = await response.json();
+  const response = await fetch(url, options);
+  const data = await response.json();
 
-    const genre: Array<Genre> = data.genres;
+  const genre: Array<Genre> = data.genres;
 
-    return (
-        <DropdownMenu>
-      <DropdownMenuTrigger className="text-white flex justify-center items-center">
-        Genre <ChevronDown className="ml-1" />
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger className="text-white flex justify-center items-center outline-none">
+        Genre <ChevronDown className="ml-1 outline-none" />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
@@ -39,7 +39,7 @@ async function GenreDropDown() {
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-    )
+  )
 }
 
 export default GenreDropDown

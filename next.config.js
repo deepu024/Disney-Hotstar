@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    dangerouslyAllowSVG: true,
     images: {
-        domains: ["image.tmdb.org"]
+        domains: ["image.tmdb.org", "placehold.co"]
     }
 }
 
