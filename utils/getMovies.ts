@@ -40,6 +40,26 @@ export async function getPopularMovies() {
     return movies.results;
 }
 
+// https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1
+export async function getTopRatedMovies() {
+    const url = "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1";
+
+    let options = {
+        headers: {
+            accept: 'application/json',
+            Authorization: `Bearer ` + getTBDMReadAccessToken()
+        },
+        next: {
+            revalidate: 60 * 60 * 24 // 24 Hours
+        }
+    }
+
+    let res = await fetch(url, options);
+    let movies = await res.json();
+
+    return movies.results;
+}
+
 // https://api.themoviedb.org/3/movie/movie_id?language=en-US
 export async function getMovieDetailsById(movie_id: number) {
     const url = `https://api.themoviedb.org/3/movie/${movie_id}?language=en-US`;
