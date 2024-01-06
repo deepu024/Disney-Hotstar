@@ -12,7 +12,7 @@ async function Genre({
     const movies = await getDiscoverMovies(id, genre);
     return (
         <div>
-            
+
         </div>
     )
 }
